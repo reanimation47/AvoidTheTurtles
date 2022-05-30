@@ -10,26 +10,28 @@ public class PlayerControl : MonoBehaviour
 
     public float moveSpeed;
     [SerializeField] private float rotationSpeed;
-    
+    [SerializeField] private GameObject EnemyKilledParticle;
+
 
     public Rigidbody rb;
 
     float xInput;
     float zInput;
-    
+
     void Awake()
     {
         Instance = this;
         rb = GetComponent<Rigidbody>();
-        
+
     }
+
 
     void Update()
     {
         xInput = Input.GetAxis("Horizontal");
         zInput = Input.GetAxis("Vertical");
 
-        
+
     }
 
     void FixedUpdate()
@@ -41,7 +43,7 @@ public class PlayerControl : MonoBehaviour
 
         rb.velocity = moveDirection;
 
-        
+
         if(moveDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
@@ -64,7 +66,10 @@ public class PlayerControl : MonoBehaviour
             //Knock vulnerable enemy away
 
             //Get collision direction
+
             Vector3 dir = collision.contacts[0].point -transform.position;
+            EnemyKilledParticle.transform.position = collision.contacts[0].point;
+            EnemyKilledParticle.GetComponent<ParticleSystem>().Play();
 
             dir = dir.normalized;
             Debug.Log(dir);

@@ -24,15 +24,17 @@ public class EnemyNavMesh : MonoBehaviour
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         navAgent = GetComponent<NavMeshAgent>();
+        eAnimator = GetComponent<Animator>();
         player = GameObject.Find("GameManager").GetComponent<GameManager>().player;
         waitT = chargeTime + chargeDelay;
     }
 
     void Start()
     {
-        eAnimator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+        //eAnimator = GetComponent<Animator>();
+        //rb = GetComponent<Rigidbody>();
         particle = GetComponent<ParticleSystem>();
         StartCoroutine("newDestination");
     }
@@ -83,7 +85,7 @@ public class EnemyNavMesh : MonoBehaviour
 
     public void useChargeSkill()
     {
-        
+
         isCharging = true;
         //rb.isKinematic = false
         StartCoroutine("startCharging");
@@ -114,7 +116,7 @@ public class EnemyNavMesh : MonoBehaviour
         yield return new WaitForSeconds(chargeTime);
         particle.Stop();
         eAnimator.SetBool("startCharging", false);
-        
+
         rb.AddForce(transform.forward *chargeSpeed, ForceMode.Impulse );
 
     }

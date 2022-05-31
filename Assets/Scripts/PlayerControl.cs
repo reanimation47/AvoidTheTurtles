@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     public float moveSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject EnemyKilledParticle;
+    [SerializeField] private GameObject PlayerKilledParticle;
 
 
     public Rigidbody rb;
@@ -77,6 +78,8 @@ public class PlayerControl : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            PlayerKilledParticle.transform.position = collision.contacts[0].point + new Vector3(0,1,0);
+            PlayerKilledParticle.GetComponent<ParticleSystem>().Play();
             Destroy(gameObject);
             GameObject.Find("GameManager").GetComponent<GameManager>().isOver = true;
         }
@@ -90,7 +93,7 @@ public class PlayerControl : MonoBehaviour
             //Get collision direction
 
             Vector3 dir = collision.contacts[0].point -transform.position;
-            EnemyKilledParticle.transform.position = collision.contacts[0].point;
+            EnemyKilledParticle.transform.position = collision.contacts[0].point + new Vector3(0,1,0);
             EnemyKilledParticle.GetComponent<ParticleSystem>().Play();
 
             dir = dir.normalized;

@@ -298,10 +298,11 @@ public class GameManager : MonoBehaviour
         foreach(GameObject e in enemies)
         {
             e.GetComponent<NavMeshAgent>().speed += 0.5f;
+            e.GetComponent<EnemyNavMesh>().chargeStrength +=5;
         }
 
         player.GetComponent<PlayerControl>().moveSpeed +=1;
-        target.GetComponent<NavMeshAgent>().speed +=0.5f;
+        target.GetComponent<NavMeshAgent>().speed +=1f;
     }
 
     void DisplayScore()

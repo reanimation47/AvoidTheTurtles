@@ -60,7 +60,7 @@ public class MenuManager : MonoBehaviour
         //PlayerPrefs.SetInt("FirstHighScore",0);
         //LeaderboardSection_Highscore.text = PlayerPrefs.GetInt("FirstHighScore",0).ToString();
 
-
+        AudioManager.instance.playBGM();
     }
 
     public int currentHighscore()

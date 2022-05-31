@@ -11,7 +11,14 @@ public class EnemyPool : MonoBehaviour
 
 void Awake()
 {
-    SharedInstance = this;
+    if (SharedInstance != null && SharedInstance != this)
+    {
+        Destroy(this);
+    }
+    else
+    {
+        SharedInstance = this;
+    }
 }
 
 void Start()

@@ -170,7 +170,7 @@ MonoBehaviour:
   ExitButton: {fileID: 262279761}
   MenuButton: {fileID: 960938133}
   stealthTimer: 5
-  levelTwoThreshold: 1
+  levelTwoThreshold: 2
   timeBetweenCharges: 8
   minX: 0
   maxX: 0

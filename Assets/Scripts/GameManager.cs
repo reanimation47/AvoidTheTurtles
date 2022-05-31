@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public bool onStealth = false;
     public bool aboveTen = false;
+    public bool isPaused = false;
     bool levelTwo = false;
 
 
@@ -113,27 +114,41 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(kinematicTimer);
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!isPaused)
+            {
+                Time.timeScale = 0;
+                isPaused = true;
+            }else
+            {
+                Time.timeScale = 1;
+                isPaused = false;
+            }
+        }
+        
+
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             useStealth();
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            //StartCoroutine(toggleObjectsKinematic(enemies,false,0f));
-            int randomEnemy = Random.Range(0, enemies.Length);
+        // if(Input.GetKeyDown(KeyCode.R))
+        // {
+        //     enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //     //StartCoroutine(toggleObjectsKinematic(enemies,false,0f));
+        //     int randomEnemy = Random.Range(0, enemies.Length);
 
-            //enemies[randomEnemy].SetActive(false);
-            EnemyNavMesh choosenEnemy = enemies[randomEnemy].GetComponent<EnemyNavMesh>();
-            choosenEnemy.useChargeSkill();
-            float waitT = choosenEnemy.waitT;
-            kinematicTimer = waitT;
-            //StartCoroutine(toggleObjectsKinematic(enemies,true,waitT));
-            //choosenEnemy.StartNavMesh();
-        }
-        //Debug.Log(kinematicTimer);
+        //     //enemies[randomEnemy].SetActive(false);
+        //     EnemyNavMesh choosenEnemy = enemies[randomEnemy].GetComponent<EnemyNavMesh>();
+        //     choosenEnemy.useChargeSkill();
+        //     float waitT = choosenEnemy.waitT;
+        //     kinematicTimer = waitT;
+        //     //StartCoroutine(toggleObjectsKinematic(enemies,true,waitT));
+        //     //choosenEnemy.StartNavMesh();
+        // }
+        // //Debug.Log(kinematicTimer);
 
         if(points >= levelTwoThreshold && !levelTwo )
         {

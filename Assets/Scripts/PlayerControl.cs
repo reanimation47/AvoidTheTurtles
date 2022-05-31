@@ -14,15 +14,25 @@ public class PlayerControl : MonoBehaviour
 
 
     public Rigidbody rb;
+    ParticleSystem playerParticle;
+
+    bool particlePlaying = false;
 
     float xInput;
     float zInput;
+    Vector3 moveDirection;
 
     void Awake()
     {
         Instance = this;
         rb = GetComponent<Rigidbody>();
+        
 
+    }
+
+    void Start()
+    {
+        playerParticle = GetComponent<ParticleSystem>();
     }
 
 
@@ -30,6 +40,16 @@ public class PlayerControl : MonoBehaviour
     {
         xInput = Input.GetAxis("Horizontal");
         zInput = Input.GetAxis("Vertical");
+        if(moveDirection != Vector3.zero && !particlePlaying)
+        {
+            playerParticle.Play();
+            particlePlaying = true;
+        }
+        if(moveDirection == Vector3.zero && particlePlaying)
+        {
+            playerParticle.Stop();
+            particlePlaying = false;
+        }
 
 
     }
@@ -39,13 +59,15 @@ public class PlayerControl : MonoBehaviour
         float xVelocity = xInput * moveSpeed;
         float zVelocity = zInput * moveSpeed;
 
-        Vector3 moveDirection = new Vector3(xVelocity, 0, zVelocity);
+        moveDirection = new Vector3(xVelocity, 0, zVelocity);
+        //Debug.Log(moveDirection);
 
         rb.velocity = moveDirection;
 
-
+        Debug.Log(moveDirection != Vector3.zero);
         if(moveDirection != Vector3.zero)
         {
+            
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }

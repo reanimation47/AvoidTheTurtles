@@ -14,7 +14,7 @@ public class EnemyNavMesh : MonoBehaviour
     bool onStealth;
     bool isCharging = false;
     ParticleSystem particle;
-
+    
     public Rigidbody rb;
     public float chargeSpeed;
     public float chargeDelay;
@@ -36,6 +36,7 @@ public class EnemyNavMesh : MonoBehaviour
         //eAnimator = GetComponent<Animator>();
         //rb = GetComponent<Rigidbody>();
         particle = GetComponent<ParticleSystem>();
+        //particleShape = particle.shape;
         StartCoroutine("newDestination");
     }
 
@@ -48,6 +49,9 @@ public class EnemyNavMesh : MonoBehaviour
         eAnimator.SetBool("isVulnerable", false);
         eAnimator.SetBool("startCharging", false);
         GetComponent<BoxCollider>().isTrigger = false;
+
+        var particleShape = particle.shape;
+        particleShape.shapeType = ParticleSystemShapeType.Donut;
     }
 
     void Update()
@@ -114,10 +118,13 @@ public class EnemyNavMesh : MonoBehaviour
         eAnimator.SetBool("startCharging", true);
         particle.Play();
         yield return new WaitForSeconds(chargeTime);
-        particle.Stop();
+        //particle.Stop();
         eAnimator.SetBool("startCharging", false);
 
         rb.AddForce(transform.forward *chargeSpeed, ForceMode.Impulse );
+
+        var particleShape = particle.shape;
+        particleShape.shapeType = ParticleSystemShapeType.Box;
 
     }
 
@@ -137,6 +144,9 @@ public class EnemyNavMesh : MonoBehaviour
         gameObject.tag = "Enemy";
         isCharging = false;
         navAgent.isStopped = false;
+
+        var particleShape = particle.shape;
+        particleShape.shapeType = ParticleSystemShapeType.Donut;
 
 
     }

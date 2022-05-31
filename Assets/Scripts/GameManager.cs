@@ -226,8 +226,8 @@ public class GameManager : MonoBehaviour
         // {
 
         // }
-        float newPosX = RandomPos(maxX);
-        float newPosY = RandomPos(maxY);
+        float newPosX = RandomPos(maxX) -2f;
+        float newPosY = RandomPos(maxY -2f);
 
         yield return new WaitForSeconds(.1f);
 
@@ -266,8 +266,8 @@ public class GameManager : MonoBehaviour
 
     public void SpawnTarget()
     {
-        float newPosX = RandomPos(maxX);
-        float newPosY = RandomPos(maxY);
+        float newPosX = RandomPos(maxX) -2;
+        float newPosY = RandomPos(maxY) -2;
 
         target.transform.position = new Vector3(newPosX, 1.5f, newPosY);
         target.SetActive(true);
@@ -347,8 +347,8 @@ public class GameManager : MonoBehaviour
 
     public Vector3 TargetDestination()
     {
-        float newPosX = RandomPos(maxX);
-        float newPosY = RandomPos(maxY);
+        float newPosX = RandomPos(maxX)-2;
+        float newPosY = RandomPos(maxY)-2;
         //Debug.Log(newPosX + " " + newPosY);
 
         return new Vector3(newPosX, -2.5f, newPosY);

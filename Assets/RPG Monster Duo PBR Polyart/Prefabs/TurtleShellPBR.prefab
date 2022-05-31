@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  chargeSpeed: 50
+  chargeStrength: 50
   chargeDelay: 4
   chargeTime: 2
   vulTimer: 4

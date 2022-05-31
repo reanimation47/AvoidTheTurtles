@@ -16,7 +16,7 @@ public class EnemyNavMesh : MonoBehaviour
     ParticleSystem particle;
     
     public Rigidbody rb;
-    public float chargeSpeed;
+    public float chargeStrength;
     public float chargeDelay;
     public float chargeTime;
     public float vulTimer;
@@ -121,7 +121,7 @@ public class EnemyNavMesh : MonoBehaviour
         //particle.Stop();
         eAnimator.SetBool("startCharging", false);
 
-        rb.AddForce(transform.forward *chargeSpeed, ForceMode.Impulse );
+        rb.AddForce(transform.forward *chargeStrength, ForceMode.Impulse );
 
         var particleShape = particle.shape;
         particleShape.shapeType = ParticleSystemShapeType.Box;

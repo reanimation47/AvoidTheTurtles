@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject ExitButton;
     [SerializeField] private GameObject MenuButton;
 
+    [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private GameObject PauseMenu_ResumeGame;
+    //[SerializeField] private GameObject PauseMenu_Quit;
+
     [Header("LevelOne Settings")]
     [SerializeField] private float stealthTimer;
     [SerializeField] private float levelTwoThreshold;
@@ -71,6 +75,16 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("MainMenuScene");
         }  );
+
+        PauseMenu_ResumeGame.GetComponent<Button>().onClick.AddListener( ()=> 
+        {
+            StartCoroutine(resumeGame(0));
+        } );
+        // PauseMenu_Quit.GetComponent<Button>().onClick.AddListener( ()=>
+        // {   
+        //     //StartCoroutine(resumeGame(0));
+        //     SceneManager.LoadScene("MainMenuScene");
+        // }  );
     }
 
     void Start()
@@ -118,12 +132,12 @@ public class GameManager : MonoBehaviour
         {
             if(!isPaused)
             {
-                Time.timeScale = 0;
-                isPaused = true;
+                //isPaused = true;
+                PauseGame();
             }else
             {
-                Time.timeScale = 1;
-                isPaused = false;
+                //isPaused = false;
+                StartCoroutine(resumeGame(0));
             }
         }
         
@@ -388,6 +402,22 @@ public class GameManager : MonoBehaviour
 
         }
 
+    }
+
+    void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+        PauseMenu.SetActive(true);
+        
+    }
+
+    IEnumerator resumeGame(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isPaused = false;
+        Time.timeScale=1;
+        PauseMenu.SetActive(false);
     }
 
     IEnumerator beginStealth()

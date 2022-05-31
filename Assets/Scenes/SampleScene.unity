@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 20463228}
   - component: {fileID: 20463230}
   - component: {fileID: 20463231}
+  - component: {fileID: 20463232}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -223,7 +224,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 518397642935952153, guid: cc8260f4ad5ffd6498c29bf04537e9eb, type: 3}
-  amountToPool: 1
+  amountToPool: 2
+--- !u!114 &20463232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20463227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99624f1c692943244821fb084449b25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 5806808570054901177, guid: ad6c4ee80fd78fd42aa784005451de6a, type: 3}
+  amountToPool: 5
 --- !u!1 &83067142
 GameObject:
   m_ObjectHideFlags: 0

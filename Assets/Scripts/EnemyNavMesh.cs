@@ -113,18 +113,31 @@ public class EnemyNavMesh : MonoBehaviour
 
     IEnumerator startCharging()
     {
+        //Show warning
+        GameObject warning = ChargeWarningPool.SharedInstance.GetPooledObject();
+        if (warning != null) {
+            warning.transform.position = transform.position + new Vector3(0,3f,0);
+            warning.transform.rotation = Quaternion.identity;
+            warning.SetActive(true);
+        }
+
         navAgent.isStopped = true;
         //Start charging
         eAnimator.SetBool("startCharging", true);
-        particle.Play();
+        //particle.Play();
         yield return new WaitForSeconds(chargeTime);
         //particle.Stop();
         eAnimator.SetBool("startCharging", false);
+
+
+        //Remove warning
+        warning.SetActive(false);
 
         rb.AddForce(transform.forward *chargeStrength, ForceMode.Impulse );
 
         var particleShape = particle.shape;
         particleShape.shapeType = ParticleSystemShapeType.Box;
+        particle.Play();
 
     }
 

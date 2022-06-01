@@ -27,6 +27,12 @@ public class ButtonControl : MonoBehaviour
         Text.GetComponent<ShowText>().showText = false;
     }
 
+    void OnMouseDown()
+    {
+        MenuManager.instance.onClickEffect(transform.position);
+        MenuManager.instance.toggleFrontGUIafter(0.3f);
+    }
+
     void Update()
     {
         transform.localScale = scaler;

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class ShowText : MonoBehaviour
+public class ShowTextDown : MonoBehaviour
 {
     public bool showText = false;
     TextMeshProUGUI text;
     Color textShown;
     Vector3 textPosition;
     public Transform ButtonPos;
-    public float textMoveDistance = 1.5f;
 
     void Start()
     {
@@ -23,7 +22,6 @@ public class ShowText : MonoBehaviour
         textPosition = ButtonPos.position;
 
 
-
     }
 
     void Update()
@@ -34,7 +32,7 @@ public class ShowText : MonoBehaviour
         if(showText)
         {
             textShown.a = Mathf.Lerp(textShown.a, 1f, 0.03f);
-            textPosition.y = Mathf.Lerp(textPosition.y, ButtonPos.position.y +textMoveDistance, 0.03f);
+            textPosition.y = Mathf.Lerp(textPosition.y, ButtonPos.position.y -1.5f, 0.03f);
         }else
         {
             textShown.a = Mathf.Lerp(textShown.a, 0f, 0.1f);

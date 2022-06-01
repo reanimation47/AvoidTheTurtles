@@ -16,6 +16,15 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button Leaderboard;
     [SerializeField] private Button BackToMenu;
 
+    [SerializeField] private GameObject frontGUI;
+    public bool frontGUIisHidden = false;
+
+    [SerializeField] private GameObject clickEffect;
+
+    // Vector3 sectionHidden = new Vector3(0,0,0);
+    // Vector3 sectionShown = new Vector3(1,1,1);
+    Vector3 frontGUIscaler = new Vector3(1,1,1);
+
     //int[] arr = new int[] {1, 9, 6, 7, 5, 9};
 
     private void Awake() 
@@ -61,6 +70,23 @@ public class MenuManager : MonoBehaviour
         //LeaderboardSection_Highscore.text = PlayerPrefs.GetInt("FirstHighScore",0).ToString();
 
         //AudioManager.instance.playBGM();
+
+        
+
+    }
+
+    void Update()
+    {
+        frontGUI.transform.localScale = frontGUIscaler;
+        if(frontGUIisHidden)
+        {
+            frontGUIscaler.x = Mathf.Lerp(frontGUIscaler.x, 0, 0.03f);
+            frontGUIscaler.y = Mathf.Lerp(frontGUIscaler.y, 0, 0.03f);
+        }else
+        {
+            frontGUIscaler.x = Mathf.Lerp(frontGUIscaler.x, 1, 0.03f);
+            frontGUIscaler.y = Mathf.Lerp(frontGUIscaler.y, 1, 0.03f);
+        }
     }
 
     public int currentHighscore()
@@ -80,5 +106,32 @@ public class MenuManager : MonoBehaviour
             return false;
         }
     }
+
+    public void onClickEffect(Vector3 clickPosition)
+    {
+
+        clickEffect.transform.position = clickPosition;
+        clickEffect.SetActive(false);
+        clickEffect.SetActive(true);
+        
+    }
+
+    public void toggleFrontGUI()
+    {
+        frontGUIisHidden = frontGUIisHidden ? false : true ;
+    }
+
+    public void toggleFrontGUIafter(float time)
+    {
+        StartCoroutine(toggleFrontGUIafterIE(time));
+    }
+
+    IEnumerator toggleFrontGUIafterIE(float time)
+    {
+        yield return new WaitForSeconds(time);
+        toggleFrontGUI();
+    }
+    
+
 
 }

@@ -10,6 +10,9 @@ public class ButtonControl : MonoBehaviour
     Vector3 scaler;
     Vector3 defaultScale;
 
+    public bool isWiggling = false;
+    public bool wiggleOn = false;
+
     void Start()
     {
         scaler = transform.localScale;
@@ -45,5 +48,34 @@ public class ButtonControl : MonoBehaviour
             scaler.x = Mathf.Lerp(scaler.x , defaultScale.x , 0.03f );
             scaler.y = Mathf.Lerp(scaler.y , defaultScale.y , 0.03f );
         }
+
+        if(isWiggling)
+        {
+            if(wiggleOn)
+            {
+                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 0.5f, 0.03f );
+            }else
+            {
+                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x, 0.03f );
+            }
+        }
+    }
+
+    IEnumerator startWiggling(float duration)
+    {
+        isWiggling = true;
+        yield return new WaitForSeconds(duration);
+        isWiggling = false;
+
+    }
+
+    IEnumerator wigglingAction(float rate)
+    {
+        while(isWiggling)
+        {
+            yield return new WaitForSeconds(rate)   
+            wiggleOn = wiggleOn ? false : true;
+        }
+        
     }
 }

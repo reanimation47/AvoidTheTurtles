@@ -420,6 +420,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1257052719}
+  isWiggling: 0
+  wiggleOn: 0
 --- !u!65 &179889665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -597,6 +599,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1137686758}
+  isWiggling: 0
+  wiggleOn: 0
 --- !u!1 &328110049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,6 +1438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1913142458}
+  isWiggling: 0
+  wiggleOn: 0
 --- !u!65 &885399040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2514,6 +2520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1318680406}
+  isWiggling: 0
+  wiggleOn: 0
 --- !u!65 &1435781969
 BoxCollider:
   m_ObjectHideFlags: 0

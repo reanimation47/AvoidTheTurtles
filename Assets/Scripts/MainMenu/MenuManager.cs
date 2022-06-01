@@ -16,8 +16,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button Leaderboard;
     [SerializeField] private Button BackToMenu;
 
+    //FontGUI
     [SerializeField] private GameObject frontGUI;
     public bool frontGUIisHidden = false;
+
+    //LeaderboardGUI
+    [SerializeField] private GameObject LeaderboardGUI;
 
     [SerializeField] private GameObject clickEffect;
 
@@ -27,23 +31,23 @@ public class MenuManager : MonoBehaviour
 
     //int[] arr = new int[] {1, 9, 6, 7, 5, 9};
 
-    private void Awake() 
-    { 
+    private void Awake()
+    {
     // If there is an instance, and it's not me, delete myself.
-    
-        if (instance != null && instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            instance = this; 
-        } 
+
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     void Start()
     {
-        StartGame.onClick.AddListener( ()=> 
+        StartGame.onClick.AddListener( ()=>
         {
             SceneManager.LoadScene("SampleScene");
         } );
@@ -71,12 +75,14 @@ public class MenuManager : MonoBehaviour
 
         //AudioManager.instance.playBGM();
 
-        
+
 
     }
 
     void Update()
     {
+
+        //Showing and Hiding frontGUI
         frontGUI.transform.localScale = frontGUIscaler;
         if(frontGUIisHidden)
         {
@@ -113,9 +119,10 @@ public class MenuManager : MonoBehaviour
         clickEffect.transform.position = clickPosition;
         clickEffect.SetActive(false);
         clickEffect.SetActive(true);
-        
+
     }
 
+    //FrontUI
     public void toggleFrontGUI()
     {
         frontGUIisHidden = frontGUIisHidden ? false : true ;
@@ -131,7 +138,13 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         toggleFrontGUI();
     }
-    
+
+    //LeaderboardGUI
+    public void toggleLeaderboardGUI()
+    {
+        LeaderboardGUI.GetComponent<LeaderboardManager>().beginToggleRanksOneByOneAfter(1.5f,0.5f);
+    }
+
 
 
 }

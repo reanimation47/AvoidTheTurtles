@@ -33,7 +33,8 @@ public class ButtonControl : MonoBehaviour
     void OnMouseDown()
     {
         MenuManager.instance.onClickEffect(transform.position);
-        MenuManager.instance.toggleFrontGUIafter(0.3f);
+        MenuManager.instance.toggleFrontGUIafter(0.5f);
+        StartCoroutine(startWiggling(2f));
     }
 
     void Update()
@@ -53,7 +54,7 @@ public class ButtonControl : MonoBehaviour
         {
             if(wiggleOn)
             {
-                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 0.5f, 0.03f );
+                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 1f, 0.03f );
             }else
             {
                 scaler.x = Mathf.Lerp(scaler.x , defaultScale.x, 0.03f );
@@ -64,8 +65,10 @@ public class ButtonControl : MonoBehaviour
     IEnumerator startWiggling(float duration)
     {
         isWiggling = true;
+        StartCoroutine(wigglingAction(0.1f));
         yield return new WaitForSeconds(duration);
         isWiggling = false;
+        StopCoroutine(wigglingAction(0.1f));
 
     }
 
@@ -73,9 +76,9 @@ public class ButtonControl : MonoBehaviour
     {
         while(isWiggling)
         {
-            yield return new WaitForSeconds(rate)   
+            yield return new WaitForSeconds(rate);
             wiggleOn = wiggleOn ? false : true;
         }
-        
+
     }
 }

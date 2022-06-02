@@ -363,7 +363,7 @@ public class GameManager : MonoBehaviour
 
             //Rounding up number
             f = Mathf.Round(f * 10.0f) * 0.1f;
-            playerSpeed.text = "Current player's speed: " + f;
+            playerSpeed.text = "Current player's speed: " + f*10;
         }
 
     }

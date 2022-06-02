@@ -24,6 +24,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject LeaderboardGUI;
     public bool LeaderboardGUIisHidden = true;
 
+    //ShopGUI
+    [SerializeField] private GameObject ShopGUI;
+
     [SerializeField] private GameObject clickEffect;
 
     // Vector3 sectionHidden = new Vector3(0,0,0);
@@ -145,6 +148,11 @@ public class MenuManager : MonoBehaviour
     {
         LeaderboardGUI.GetComponent<LeaderboardManager>().beginToggleRanksOneByOneAfter(reverseOrder,delay,timeGap);
         LeaderboardGUIisHidden = LeaderboardGUIisHidden ? false : true;
+    }
+
+    public void toggleShopGUI()
+    {
+        ShopGUI.GetComponent<ShopManager>().toggleShopGUI();
     }
 
 

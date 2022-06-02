@@ -2,42 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonControl : MonoBehaviour
+public class LeaderboardGoBackButton : MonoBehaviour
 {
+
     public bool mouseHover = false;
-    public GameObject Text;
     Vector3 scaler;
     Vector3 defaultScale;
 
     public bool isWiggling = false;
     public bool wiggleOn = false;
 
+
     void Start()
     {
         scaler = transform.localScale;
         defaultScale = transform.localScale;
     }
+    void OnMouseDown()
+    {
+        StartCoroutine(startWiggling(0.2f));
+        MenuManager.instance.onClickEffect(transform.position);
+        MenuManager.instance.toggleLeaderboardGUI(true,0.5f,0.2f);
+        MenuManager.instance.toggleFrontGUIafter(1f);
+    }
+
     void OnMouseOver()
     {
         mouseHover = true;
-        Text.GetComponent<ShowText>().showText = true;
     }
 
     void OnMouseExit()
     {
         mouseHover = false;
-        Text.GetComponent<ShowText>().showText = false;
-    }
-
-    void OnMouseDown()
-    {
-        MenuManager.instance.onClickEffect(transform.position);
-        MenuManager.instance.toggleFrontGUIafter(0.5f);
-        StartCoroutine(startWiggling(2f));
     }
 
     void Update()
-    {
+    {   
+        //Hover animation
         transform.localScale = scaler;
         if(mouseHover)
         {
@@ -49,6 +50,7 @@ public class ButtonControl : MonoBehaviour
             scaler.y = Mathf.Lerp(scaler.y , defaultScale.y , 0.03f );
         }
 
+        //On click animation
         if(isWiggling)
         {
             if(wiggleOn)
@@ -60,7 +62,6 @@ public class ButtonControl : MonoBehaviour
             }
         }
     }
-
     IEnumerator startWiggling(float duration)
     {
         isWiggling = true;

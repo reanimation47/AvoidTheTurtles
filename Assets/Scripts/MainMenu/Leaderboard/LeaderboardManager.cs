@@ -79,20 +79,34 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    IEnumerator toggleRanksOneByOneAfter(float delay,float timeGap)
+    IEnumerator toggleRanksOneByOneAfter(bool reverseOrder,float delay,float timeGap)
     {
-        yield return new WaitForSeconds(delay);
-        hideRank1 = hideRank1 ? false : true;
-        yield return new WaitForSeconds(timeGap);
-        hideRank2 = hideRank2 ? false : true;
-        yield return new WaitForSeconds(timeGap);
-        hideRank3 = hideRank3 ? false : true;
-        yield return new WaitForSeconds(timeGap);
-        hideBackButton = hideBackButton ? false : true;
+        if(!reverseOrder)
+        {
+            yield return new WaitForSeconds(delay);
+            hideRank1 = hideRank1 ? false : true;
+            yield return new WaitForSeconds(timeGap);
+            hideRank2 = hideRank2 ? false : true;
+            yield return new WaitForSeconds(timeGap);
+            hideRank3 = hideRank3 ? false : true;
+            yield return new WaitForSeconds(timeGap);
+            hideBackButton = hideBackButton ? false : true;
+        }else
+        {
+            yield return new WaitForSeconds(delay);
+            hideBackButton = hideBackButton ? false : true;
+            yield return new WaitForSeconds(timeGap);
+            hideRank3 = hideRank3 ? false : true;
+            yield return new WaitForSeconds(timeGap);
+            hideRank2 = hideRank2 ? false : true;
+            yield return new WaitForSeconds(timeGap);
+            hideRank1 = hideRank1 ? false : true;
+        }
+        
     }
 
-    public void beginToggleRanksOneByOneAfter(float delay, float timeGap)
+    public void beginToggleRanksOneByOneAfter(bool reverseOrder,float delay, float timeGap)
     {
-        StartCoroutine(toggleRanksOneByOneAfter(delay,timeGap));
+        StartCoroutine(toggleRanksOneByOneAfter(reverseOrder,delay,timeGap));
     }
 }

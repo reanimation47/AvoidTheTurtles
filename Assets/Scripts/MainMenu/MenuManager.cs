@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviour
 
     //LeaderboardGUI
     [SerializeField] private GameObject LeaderboardGUI;
+    public bool LeaderboardGUIisHidden = true;
 
     [SerializeField] private GameObject clickEffect;
 
@@ -140,9 +141,10 @@ public class MenuManager : MonoBehaviour
     }
 
     //LeaderboardGUI
-    public void toggleLeaderboardGUI()
+    public void toggleLeaderboardGUI(bool reverseOrder,float delay, float timeGap)
     {
-        LeaderboardGUI.GetComponent<LeaderboardManager>().beginToggleRanksOneByOneAfter(1.5f,0.5f);
+        LeaderboardGUI.GetComponent<LeaderboardManager>().beginToggleRanksOneByOneAfter(reverseOrder,delay,timeGap);
+        LeaderboardGUIisHidden = LeaderboardGUIisHidden ? false : true;
     }
 
 

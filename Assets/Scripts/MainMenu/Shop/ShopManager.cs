@@ -39,14 +39,14 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void toggleShopGUI()
+    public void toggleShopGUI(float delay)
     {
-        StartCoroutine(toggleShopGUIIE());
+        StartCoroutine(toggleShopGUIIE(delay));
     }
 
-    IEnumerator toggleShopGUIIE()
+    IEnumerator toggleShopGUIIE(float delay)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delay);
         hideComingSoonText = hideComingSoonText ? false : true;
     }
     

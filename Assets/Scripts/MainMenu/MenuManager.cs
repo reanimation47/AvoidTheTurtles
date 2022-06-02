@@ -150,9 +150,9 @@ public class MenuManager : MonoBehaviour
         LeaderboardGUIisHidden = LeaderboardGUIisHidden ? false : true;
     }
 
-    public void toggleShopGUI()
+    public void toggleShopGUI(float delay)
     {
-        ShopGUI.GetComponent<ShopManager>().toggleShopGUI();
+        ShopGUI.GetComponent<ShopManager>().toggleShopGUI(delay);
     }
 
 

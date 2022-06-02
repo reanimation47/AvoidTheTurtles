@@ -355,6 +355,7 @@ public class GameManager : MonoBehaviour
         HighScore.text = "HighScore: "+ currentHighScore;
     }
 
+    public int playerSpeedInInt;
     void DisplayerSpeed()
     {
         if(player)
@@ -363,7 +364,9 @@ public class GameManager : MonoBehaviour
 
             //Rounding up number
             f = Mathf.Round(f * 10.0f) * 0.1f;
-            playerSpeed.text = "Current player's speed: " + f*10;
+            f = f * 10;
+            playerSpeedInInt = (int)f;
+            playerSpeed.text = "Current player's speed: " + f;
         }
 
     }

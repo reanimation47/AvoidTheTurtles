@@ -6,6 +6,6 @@ public class ShopButton : MonoBehaviour
 {
     void OnMouseDown()
     {
-        MenuManager.instance.toggleShopGUI();
+        MenuManager.instance.toggleShopGUI(1);
     }
 }

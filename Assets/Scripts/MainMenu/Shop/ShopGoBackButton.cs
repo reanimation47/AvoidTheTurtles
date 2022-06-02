@@ -22,7 +22,7 @@ public class ShopGoBackButton : MonoBehaviour
     {
         StartCoroutine(startWiggling(0.2f));
         MenuManager.instance.onClickEffect(transform.position);
-        MenuManager.instance.toggleShopGUI();
+        MenuManager.instance.toggleShopGUI(0.3f);
         MenuManager.instance.toggleFrontGUIafter(1f);
     }
 

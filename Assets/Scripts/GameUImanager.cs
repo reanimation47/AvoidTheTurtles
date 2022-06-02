@@ -27,10 +27,14 @@ public class GameUImanager : MonoBehaviour
     //HighScore
     [SerializeField] private TextMeshProUGUI currentHighScoreText;
 
+
+    //Player's speed display
+    public TextMeshProUGUI playerSpeedValue;
+
     private void Awake()
     {
     // If there is an instance, and it's not me, delete myself.
-
+        //
         if (instance != null && instance != this)
         {
             Destroy(this);
@@ -50,7 +54,7 @@ public class GameUImanager : MonoBehaviour
 
     void Update()
     {
-
+        playerSpeedValue.text = GameManager.instance.playerSpeedInInt.ToString();
         currentHighScoreText.text = MenuManager.instance.currentHighscore().ToString();
         //Animating Energy bar
         energySliderFill.GetComponent<Image>().color = energySliderFillColor;

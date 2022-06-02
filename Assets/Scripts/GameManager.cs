@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     [Header("Prefabs and refs")]
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject playerBody;
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
     public bool isOver = false;
     bool showRestartButton = false;
 
-    int specialPoints = 0;
+    public int specialPoints = 0;
 
     public GameObject player;
     GameObject target;
@@ -65,6 +67,14 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
         //Restart Button
         RestartButton.GetComponent<Button>().onClick.AddListener(RestartGame);
         ExitButton.GetComponent<Button>().onClick.AddListener( ()=>

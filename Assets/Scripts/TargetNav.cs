@@ -48,13 +48,14 @@ public class TargetNav : MonoBehaviour
             particle.GetComponent<ParticleSystem>().Play();
             //Destroy(gameObject);
             //gameObject.SetActive(false);
-            GameObject.Find("GameManager").GetComponent<GameManager>().hideTarget();
-            //GameObject.Find("GameManager").GetComponent<GameManager>().removeTarget();
+            GameManager.instance.hideTarget();
+            //GameManager.instance.removeTarget();
 
-            GameObject.Find("GameManager").GetComponent<GameManager>().targetEaten();
-            GameObject.Find("GameManager").GetComponent<GameManager>().SpawnTarget();
-            GameObject.Find("GameManager").GetComponent<GameManager>().increaseDifficulty();
-            GameObject.Find("GameManager").GetComponent<GameManager>().SpawnOneEnemy();
+            GameManager.instance.targetEaten();
+            GameUImanager.instance.startWigglingScoreDisplay();
+            GameManager.instance.SpawnTarget();
+            GameManager.instance.increaseDifficulty();
+            GameManager.instance.SpawnOneEnemy();
         }
     }
 }

@@ -40,14 +40,19 @@ public class ShopGoBackButton : MonoBehaviour
     {   
         //Hover animation
         transform.localScale = scaler;
+        
+    }
+
+    void FixedUpdate()
+    {
         if(mouseHover)
         {
-            scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 0.2f, 0.03f );
-            scaler.y = Mathf.Lerp(scaler.y , defaultScale.y + 0.2f, 0.03f );
+            scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 0.2f, 0.15f );
+            scaler.y = Mathf.Lerp(scaler.y , defaultScale.y + 0.2f, 0.15f );
         }else
         {
-            scaler.x = Mathf.Lerp(scaler.x , defaultScale.x , 0.03f );
-            scaler.y = Mathf.Lerp(scaler.y , defaultScale.y , 0.03f );
+            scaler.x = Mathf.Lerp(scaler.x , defaultScale.x , 0.15f );
+            scaler.y = Mathf.Lerp(scaler.y , defaultScale.y , 0.15f );
         }
 
         //On click animation
@@ -55,13 +60,14 @@ public class ShopGoBackButton : MonoBehaviour
         {
             if(wiggleOn)
             {
-                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 1f, 0.03f );
+                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 1f, 0.15f );
             }else
             {
-                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x, 0.03f );
+                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x, 0.15f );
             }
         }
     }
+
     IEnumerator startWiggling(float duration)
     {
         isWiggling = true;

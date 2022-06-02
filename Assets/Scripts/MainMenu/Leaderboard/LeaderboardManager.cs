@@ -49,33 +49,38 @@ public class LeaderboardManager : MonoBehaviour
         Rank3.transform.position = Rank3Positioner;
         BackButton.transform.position = BackButtonPositioner;
 
+        
+    }
+
+    void FixedUpdate()
+    {
         if(hideRank1)
         {
-            Rank1Positioner.x = Mathf.Lerp(Rank1Positioner.x, defaultRank1position.x -30f , 0.04f);
+            Rank1Positioner.x = Mathf.Lerp(Rank1Positioner.x, defaultRank1position.x -30f , 0.15f);
         }else
         {
-            Rank1Positioner.x = Mathf.Lerp(Rank1Positioner.x, defaultRank1position.x , 0.04f);
+            Rank1Positioner.x = Mathf.Lerp(Rank1Positioner.x, defaultRank1position.x , 0.15f);
         }
         if(hideRank2)
         {
-            Rank2Positioner.x = Mathf.Lerp(Rank2Positioner.x, defaultRank2position.x -30f , 0.04f);
+            Rank2Positioner.x = Mathf.Lerp(Rank2Positioner.x, defaultRank2position.x -30f , 0.15f);
         }else
         {
-            Rank2Positioner.x = Mathf.Lerp(Rank2Positioner.x, defaultRank2position.x , 0.04f);
+            Rank2Positioner.x = Mathf.Lerp(Rank2Positioner.x, defaultRank2position.x , 0.15f);
         }
         if(hideRank3)
         {
-            Rank3Positioner.x = Mathf.Lerp(Rank3Positioner.x, defaultRank3position.x -30f , 0.04f);
+            Rank3Positioner.x = Mathf.Lerp(Rank3Positioner.x, defaultRank3position.x -30f , 0.15f);
         }else
         {
-            Rank3Positioner.x = Mathf.Lerp(Rank3Positioner.x, defaultRank3position.x , 0.04f);
+            Rank3Positioner.x = Mathf.Lerp(Rank3Positioner.x, defaultRank3position.x , 0.15f);
         }
         if(hideBackButton)
         {
-            BackButtonPositioner.x = Mathf.Lerp(BackButtonPositioner.x, defaultBackButtonPosition.x -30f, 0.04f);
+            BackButtonPositioner.x = Mathf.Lerp(BackButtonPositioner.x, defaultBackButtonPosition.x -30f, 0.15f);
         }else
         {
-            BackButtonPositioner.x = Mathf.Lerp(BackButtonPositioner.x, defaultBackButtonPosition.x, 0.04f);
+            BackButtonPositioner.x = Mathf.Lerp(BackButtonPositioner.x, defaultBackButtonPosition.x, 0.15f);
         }
     }
 

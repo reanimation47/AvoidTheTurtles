@@ -31,15 +31,20 @@ public class ShowText : MonoBehaviour
 
         text.color = textShown;
         transform.position = textPosition;
+        
+
+    }
+
+    void FixedUpdate()
+    {
         if(showText)
         {
-            textShown.a = Mathf.Lerp(textShown.a, 1f, 0.03f);
-            textPosition.y = Mathf.Lerp(textPosition.y, ButtonPos.position.y +textMoveDistance, 0.03f);
+            textShown.a = Mathf.Lerp(textShown.a, 1f, 0.15f);
+            textPosition.y = Mathf.Lerp(textPosition.y, ButtonPos.position.y +textMoveDistance, 0.15f);
         }else
         {
-            textShown.a = Mathf.Lerp(textShown.a, 0f, 0.1f);
-            textPosition.y = Mathf.Lerp(textPosition.y, ButtonPos.position.y, 0.03f);
+            textShown.a = Mathf.Lerp(textShown.a, 0f, 0.15f);
+            textPosition.y = Mathf.Lerp(textPosition.y, ButtonPos.position.y, 0.15f);
         }
-
     }
 }

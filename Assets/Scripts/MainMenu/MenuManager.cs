@@ -88,14 +88,19 @@ public class MenuManager : MonoBehaviour
 
         //Showing and Hiding frontGUI
         frontGUI.transform.localScale = frontGUIscaler;
+        
+    }
+
+    void FixedUpdate()
+    {
         if(frontGUIisHidden)
         {
-            frontGUIscaler.x = Mathf.Lerp(frontGUIscaler.x, 0, 0.03f);
-            frontGUIscaler.y = Mathf.Lerp(frontGUIscaler.y, 0, 0.03f);
+            frontGUIscaler.x = Mathf.Lerp(frontGUIscaler.x, 0, 0.1f);
+            frontGUIscaler.y = Mathf.Lerp(frontGUIscaler.y, 0, 0.1f);
         }else
         {
-            frontGUIscaler.x = Mathf.Lerp(frontGUIscaler.x, 1, 0.03f);
-            frontGUIscaler.y = Mathf.Lerp(frontGUIscaler.y, 1, 0.03f);
+            frontGUIscaler.x = Mathf.Lerp(frontGUIscaler.x, 1, 0.1f);
+            frontGUIscaler.y = Mathf.Lerp(frontGUIscaler.y, 1, 0.1f);
         }
     }
 

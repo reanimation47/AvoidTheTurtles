@@ -28,14 +28,19 @@ public class ShopManager : MonoBehaviour
         ComingSoonText.transform.position = ComingSoonTextPositioner;
         BackButton.transform.position = BackButtonPositioner;
 
+        
+    }
+
+    void FixedUpdate()
+    {
         if(hideComingSoonText)
         {
-            ComingSoonTextPositioner.x = Mathf.Lerp(ComingSoonTextPositioner.x,defaultComingSoonTextPosition.x +15f,0.05f);
-            BackButtonPositioner.x = Mathf.Lerp(BackButtonPositioner.x, defaultBackButtonPosition.x + 15f, 0.05f);
+            ComingSoonTextPositioner.x = Mathf.Lerp(ComingSoonTextPositioner.x,defaultComingSoonTextPosition.x +15f,0.2f);
+            BackButtonPositioner.x = Mathf.Lerp(BackButtonPositioner.x, defaultBackButtonPosition.x + 15f, 0.2f);
         }else
         {
-            ComingSoonTextPositioner.x = Mathf.Lerp(ComingSoonTextPositioner.x,defaultComingSoonTextPosition.x,0.05f);
-            BackButtonPositioner.x = Mathf.Lerp(BackButtonPositioner.x, defaultBackButtonPosition.x, 0.05f);
+            ComingSoonTextPositioner.x = Mathf.Lerp(ComingSoonTextPositioner.x,defaultComingSoonTextPosition.x,0.2f);
+            BackButtonPositioner.x = Mathf.Lerp(BackButtonPositioner.x, defaultBackButtonPosition.x, 0.2f);
         }
     }
 

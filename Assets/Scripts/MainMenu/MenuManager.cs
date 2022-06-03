@@ -35,6 +35,8 @@ public class MenuManager : MonoBehaviour
 
     //int[] arr = new int[] {1, 9, 6, 7, 5, 9};
 
+    
+
     private void Awake()
     {
     // If there is an instance, and it's not me, delete myself.
@@ -46,7 +48,14 @@ public class MenuManager : MonoBehaviour
         else
         {
             instance = this;
+            //DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public void DestroyMyself()
+    {
+        Destroy(gameObject);
+        instance = null;
     }
 
     void Start()
@@ -159,6 +168,7 @@ public class MenuManager : MonoBehaviour
     {
         ShopGUI.GetComponent<ShopManager>().toggleShopGUI(delay);
     }
+    
 
 
 

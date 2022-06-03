@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
         } );
         MenuButton.GetComponent<Button>().onClick.AddListener( ()=>
         {
+            MenuManager.instance.DestroyMyself();
             SceneManager.LoadScene("MainMenuScene");
         }  );
 

@@ -33,7 +33,7 @@ public class GameOverButtons : MonoBehaviour
     {
         //MenuManager.instance.onClickEffect(transform.position);
         //MenuManager.instance.toggleFrontGUIafter(0.5f);
-        StartCoroutine(startWiggling(2f));
+        StartCoroutine(startWiggling(0.3f));
     }
 
     void Update()
@@ -46,8 +46,8 @@ public class GameOverButtons : MonoBehaviour
     {
         if(mouseHover)
         {
-            scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 0.2f, 0.15f );
-            scaler.y = Mathf.Lerp(scaler.y , defaultScale.y + 0.2f, 0.15f );
+            scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 0.1f, 0.15f );
+            scaler.y = Mathf.Lerp(scaler.y , defaultScale.y + 0.1f, 0.15f );
         }else
         {
             scaler.x = Mathf.Lerp(scaler.x , defaultScale.x , 0.15f );
@@ -58,7 +58,7 @@ public class GameOverButtons : MonoBehaviour
         {
             if(wiggleOn)
             {
-                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 1f, 0.15f );
+                scaler.x = Mathf.Lerp(scaler.x , defaultScale.x + 0.1f, 0.15f );
             }else
             {
                 scaler.x = Mathf.Lerp(scaler.x , defaultScale.x, 0.15f );

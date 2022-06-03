@@ -31,6 +31,23 @@ public class GameUImanager : MonoBehaviour
     //Player's speed display
     public TextMeshProUGUI playerSpeedValue;
 
+    //Game over GUI
+    float GameOverGUIalpha = 0f;
+    [SerializeField] private GameObject GameOverGUI;
+    [SerializeField] private TextMeshProUGUI finalSpeed;
+    [SerializeField] private TextMeshProUGUI finalScore;
+    [SerializeField] private TextMeshProUGUI finalGems;
+    [SerializeField] private GameObject finalGemsSection;
+    Vector3 finalGemsSectionScaler = new Vector3(1,1,1);
+    public bool finalGemsPop = false;
+    float finalSpeedTarget = 0;
+    float finalSpeedValue = 0;
+    float finalScoreTarget = 0;
+    float finalScoreValue = 0;
+    
+    public bool hideGameOverGUI = true;
+
+
     private void Awake()
     {
     // If there is an instance, and it's not me, delete myself.
@@ -101,8 +118,47 @@ public class GameUImanager : MonoBehaviour
             ScoreScaler.x = Mathf.Lerp(ScoreScaler.x, 1f, 0.05f);
             ScoreScaler.y = Mathf.Lerp(ScoreScaler.y, 1f, 0.05f);
         } 
+
+        //Animating Game Over UI
+        GameOverGUI.GetComponent<CanvasGroup>().alpha = GameOverGUIalpha;
+        finalSpeed.text = (((int)finalSpeedValue)+1).ToString();
+        finalScore.text = (((int)finalScoreValue)+1).ToString();
+
+        finalGemsSection.transform.localScale = finalGemsSectionScaler;
     }
 
+    
+    void FixedUpdate()
+    {
+        Debug.Log(GameOverGUIalpha);
+        //Showing and hiding Game Over UI
+        if(hideGameOverGUI)
+        {
+            GameOverGUIalpha = Mathf.Lerp(GameOverGUIalpha, 0f, 0.025f);
+        }else
+        {
+            GameOverGUIalpha = Mathf.Lerp(GameOverGUIalpha, 1f, 0.025f);
+        }
+
+        finalScoreValue = Mathf.Lerp(finalScoreValue, finalScoreTarget, 0.025f);
+        finalSpeedValue = Mathf.Lerp(finalSpeedValue, finalSpeedTarget, 0.025f);
+
+        //Poping final gems reward
+
+        if(finalGemsPop)
+        {
+            finalGemsSectionScaler.x = Mathf.Lerp(finalGemsSectionScaler.x, 1.4f, 0.1f);
+            finalGemsSectionScaler.y = Mathf.Lerp(finalGemsSectionScaler.y, 1.4f, 0.1f);
+        }else
+        {
+            finalGemsSectionScaler.x = Mathf.Lerp(finalGemsSectionScaler.x, 1f, 0.1f);
+            finalGemsSectionScaler.y = Mathf.Lerp(finalGemsSectionScaler.y, 1f, 0.1f);
+        }
+
+
+    }
+
+    //In game GUI
     IEnumerator wiggleScoreDisplay()
     {
         ScorePop = true;
@@ -124,4 +180,52 @@ public class GameUImanager : MonoBehaviour
         }
         
     }
+
+
+    //Game Over GUI
+    public void toggleGameOverGUI()
+    {
+        hideGameOverGUI = hideGameOverGUI ? false : true;
+        toggleFinalResultsValues();
+        
+    }
+
+    public void toggleFinalResultsValues()
+    {
+        if(!hideGameOverGUI)
+        {
+            finalScoreTarget = GameManager.instance.points;
+            finalSpeedTarget = GameManager.instance.playerSpeedInInt;
+            startWigglingFinalGems(4f);
+        }else
+        {
+            finalScoreTarget = 0;
+            finalSpeedTarget = 0;
+        }
+    }
+    IEnumerator wiggleFinalGems()
+    {
+        finalGemsPop = true;
+        yield return new WaitForSeconds(0.2f);
+        finalGemsPop = false;
+    }
+
+    IEnumerator wiggleFinalGemsAfter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(wiggleFinalGems());
+        DisplayFinalGems();
+    }
+
+    public void startWigglingFinalGems(float delay)
+    {
+        StartCoroutine(wiggleFinalGemsAfter(delay));
+    }
+
+    void DisplayFinalGems()
+    {
+        finalGems.text = (finalScoreTarget*finalSpeedTarget).ToString();
+    }
+
+
 }

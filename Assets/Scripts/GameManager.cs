@@ -226,9 +226,11 @@ public class GameManager : MonoBehaviour
     {
         if(isOver && !showRestartButton)
         {
-            RestartButton.SetActive(true);
-            ExitButton.SetActive(true);
-            MenuButton.SetActive(true);
+            // RestartButton.SetActive(true);
+            // ExitButton.SetActive(true);
+            // MenuButton.SetActive(true);
+
+            GameUImanager.instance.toggleGameOverGUI();
             showRestartButton = true;
         }
 

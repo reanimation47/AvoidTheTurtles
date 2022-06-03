@@ -130,7 +130,7 @@ public class GameUImanager : MonoBehaviour
     
     void FixedUpdate()
     {
-        Debug.Log(GameOverGUIalpha);
+        //Debug.Log(GameOverGUIalpha);
         //Showing and hiding Game Over UI
         if(hideGameOverGUI)
         {

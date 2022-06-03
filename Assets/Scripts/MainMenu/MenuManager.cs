@@ -96,6 +96,7 @@ public class MenuManager : MonoBehaviour
     {
 
         //Showing and Hiding frontGUI
+        if(!frontGUI){return;}
         frontGUI.transform.localScale = frontGUIscaler;
         
     }

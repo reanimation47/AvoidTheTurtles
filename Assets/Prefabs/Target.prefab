@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27fe19a85244fd4a82476eddfabda32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eatenSound: {fileID: 8300000, guid: 937c0894ebb013744a2445b883d65c74, type: 3}
 --- !u!198 &4108267634323009444
 ParticleSystem:
   m_ObjectHideFlags: 0

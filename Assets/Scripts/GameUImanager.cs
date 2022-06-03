@@ -8,6 +8,9 @@ public class GameUImanager : MonoBehaviour
 {
     public static GameUImanager instance {get; private set;}
 
+    //Audio
+    public AudioClip FinalGemsPopSound;
+    public AudioClip GameOverSound;
     //Energy slider
     [SerializeField] private GameObject energySlider;
     [SerializeField] private GameObject energySliderFill;
@@ -187,6 +190,8 @@ public class GameUImanager : MonoBehaviour
     {
         hideGameOverGUI = hideGameOverGUI ? false : true;
         toggleFinalResultsValues();
+        //AudioManager.instance.playSound(GameOverSound,1f);
+        playGameOverSoundAfter(0.5f);
         
     }
 
@@ -225,6 +230,18 @@ public class GameUImanager : MonoBehaviour
     void DisplayFinalGems()
     {
         finalGems.text = (finalScoreTarget*finalSpeedTarget).ToString();
+        AudioManager.instance.playSound(FinalGemsPopSound,1f);
+    }
+
+    IEnumerator playGameOverSoundAfterIE(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        AudioManager.instance.playSound(GameOverSound,1f);
+    }
+
+    void playGameOverSoundAfter(float delay)
+    {
+        StartCoroutine(playGameOverSoundAfterIE(delay));
     }
 
 

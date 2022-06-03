@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverButtons : MonoBehaviour
 {
+    public AudioClip clickSound;
     public bool mouseHover = false;
     //public GameObject Text;
     Vector3 scaler;
@@ -11,6 +13,8 @@ public class GameOverButtons : MonoBehaviour
 
     public bool isWiggling = false;
     public bool wiggleOn = false;
+
+    public bool isReplayButton = false;
 
     void Start()
     {
@@ -34,6 +38,14 @@ public class GameOverButtons : MonoBehaviour
         //MenuManager.instance.onClickEffect(transform.position);
         //MenuManager.instance.toggleFrontGUIafter(0.5f);
         StartCoroutine(startWiggling(0.3f));
+        AudioManager.instance.playSound(clickSound,1f);
+        if(isReplayButton)
+        {
+            restartGame(0.5f);
+        }else
+        {
+            backToMenu(0.5f);
+        }
     }
 
     void Update()
@@ -85,4 +97,28 @@ public class GameOverButtons : MonoBehaviour
         }
 
     }
+
+    IEnumerator restartGameIE(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    void restartGame(float delay)
+    {
+        StartCoroutine(restartGameIE(delay));
+    }
+
+    IEnumerator backToMenuIE(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        MenuManager.instance.DestroyMyself();
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    void backToMenu(float delay)
+    {
+        StartCoroutine(backToMenuIE(delay));
+    }
+
 }

@@ -557,6 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1257052719}
+  clickSound: {fileID: 0}
   isWiggling: 0
   wiggleOn: 0
 --- !u!65 &179889665
@@ -742,6 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1137686758}
+  clickSound: {fileID: 8300000, guid: 60091b29f4719f043a4c79e2364d91a5, type: 3}
   isWiggling: 0
   wiggleOn: 0
 --- !u!114 &240039796
@@ -2048,6 +2050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1913142458}
+  clickSound: {fileID: 8300000, guid: 60091b29f4719f043a4c79e2364d91a5, type: 3}
   isWiggling: 0
   wiggleOn: 0
 --- !u!65 &885399040
@@ -2178,6 +2181,7 @@ MonoBehaviour:
   mouseHover: 0
   isWiggling: 0
   wiggleOn: 0
+  clickSound: {fileID: 8300000, guid: 6aacd19c1a8c2864ca0a69f425045ca5, type: 3}
 --- !u!65 &944380598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3193,6 +3197,7 @@ MonoBehaviour:
   mouseHover: 0
   isWiggling: 0
   wiggleOn: 0
+  clickSound: {fileID: 8300000, guid: 6aacd19c1a8c2864ca0a69f425045ca5, type: 3}
 --- !u!1 &1379967639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3223,6 +3228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb20eb19cc066b4092bec09f2bd2d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM: {fileID: 8300000, guid: 9746697039110b5469b9f44621eb8c51, type: 3}
 --- !u!4 &1379967641
 Transform:
   m_ObjectHideFlags: 0
@@ -3248,8 +3254,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9746697039110b5469b9f44621eb8c51, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.278
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3637,6 +3643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1318680406}
+  clickSound: {fileID: 8300000, guid: 6e0f71e1ad5fa8049ba755b256f5edd5, type: 3}
   isWiggling: 0
   wiggleOn: 0
 --- !u!65 &1435781969

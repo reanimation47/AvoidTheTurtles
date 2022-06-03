@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance {get; private set;}
     AudioSource audioPlayer;
-
+    public AudioClip BGM;
 
 
     private void Awake() 
@@ -34,11 +34,11 @@ public class AudioManager : MonoBehaviour
 
     public void playBGM()
     {
-        audioPlayer.Play();
+        playSound(BGM,0.1f);
     }
 
-    public void playSound( AudioClip sound)
+    public void playSound( AudioClip sound, float volume)
     {
-        audioPlayer.PlayOneShot(sound);
+        audioPlayer.PlayOneShot(sound, volume);
     }
 }

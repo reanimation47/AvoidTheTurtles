@@ -11,6 +11,7 @@ public class LeaderboardGoBackButton : MonoBehaviour
 
     public bool isWiggling = false;
     public bool wiggleOn = false;
+    public AudioClip clickSound;
 
 
     void Start()
@@ -24,6 +25,7 @@ public class LeaderboardGoBackButton : MonoBehaviour
         MenuManager.instance.onClickEffect(transform.position);
         MenuManager.instance.toggleLeaderboardGUI(true,0.5f,0.2f);
         MenuManager.instance.toggleFrontGUIafter(1f);
+        AudioManager.instance.playSound(clickSound,1f);
     }
 
     void OnMouseOver()

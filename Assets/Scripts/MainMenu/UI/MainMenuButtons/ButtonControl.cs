@@ -8,6 +8,7 @@ public class ButtonControl : MonoBehaviour
     public GameObject Text;
     Vector3 scaler;
     Vector3 defaultScale;
+    public AudioClip clickSound;
 
     public bool isWiggling = false;
     public bool wiggleOn = false;
@@ -34,6 +35,7 @@ public class ButtonControl : MonoBehaviour
         MenuManager.instance.onClickEffect(transform.position);
         MenuManager.instance.toggleFrontGUIafter(0.5f);
         StartCoroutine(startWiggling(2f));
+        AudioManager.instance.playSound(clickSound,1f);
     }
 
     void Update()

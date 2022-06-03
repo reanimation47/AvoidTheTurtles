@@ -258,6 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96be228080c15b419a8ea5c670b903e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FinalGemsPopSound: {fileID: 8300000, guid: 8ae5d4638e19322478e9246e1319314e, type: 3}
+  GameOverSound: {fileID: 8300000, guid: 606d439b2441b4c4f953db4f4b2a1094, type: 3}
   energySlider: {fileID: 571303698}
   energySliderFill: {fileID: 189059354}
   energyBarWiggling: 0
@@ -6354,7 +6356,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332567099}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &332567101
 Camera:
   m_ObjectHideFlags: 0
@@ -6789,6 +6791,10 @@ PrefabInstance:
       value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8927097678981092622, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
+      propertyPath: playerDeadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a1b29ff646a8cc9468acb31792b9df79, type: 3}
+    - target: {fileID: 8927097678981092622, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
       propertyPath: EnemyKilledParticle
       value: 
       objectReference: {fileID: 1564534013}
@@ -6796,6 +6802,10 @@ PrefabInstance:
       propertyPath: PlayerKilledParticle
       value: 
       objectReference: {fileID: 203478233}
+    - target: {fileID: 8927097678981092622, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
+      propertyPath: playerKillsEnemySound
+      value: 
+      objectReference: {fileID: 8300000, guid: d2c2261d458e52c43854e60d445fb638, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
 --- !u!1 &571303698 stripped
@@ -7460,6 +7470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb20eb19cc066b4092bec09f2bd2d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM: {fileID: 0}
 --- !u!1 &769555309
 GameObject:
   m_ObjectHideFlags: 0
@@ -9941,9 +9952,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0968ed1e3886c4b832ebaa09884fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 6aacd19c1a8c2864ca0a69f425045ca5, type: 3}
   mouseHover: 0
   isWiggling: 0
   wiggleOn: 0
+  isReplayButton: 1
 --- !u!114 &2004895406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9956,9 +9969,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0968ed1e3886c4b832ebaa09884fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 60091b29f4719f043a4c79e2364d91a5, type: 3}
   mouseHover: 0
   isWiggling: 0
   wiggleOn: 0
+  isReplayButton: 0
 --- !u!65 &2004895407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17619,7 +17634,7 @@ GameObject:
   - component: {fileID: 2004895407}
   - component: {fileID: 2004895405}
   m_Layer: 5
-  m_Name: Button_Continue
+  m_Name: Button_Replay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

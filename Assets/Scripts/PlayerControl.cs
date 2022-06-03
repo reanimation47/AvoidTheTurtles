@@ -7,7 +7,8 @@ public class PlayerControl : MonoBehaviour
 
     public static PlayerControl Instance;
 
-
+    public AudioClip playerDeadSound;
+    public AudioClip playerKillsEnemySound;
     public float moveSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject EnemyKilledParticle;
@@ -78,6 +79,7 @@ public class PlayerControl : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            AudioManager.instance.playSound(playerDeadSound,1f);
             PlayerKilledParticle.transform.position = collision.contacts[0].point + new Vector3(0,1,0);
             PlayerKilledParticle.GetComponent<ParticleSystem>().Play();
             Destroy(gameObject);
@@ -91,7 +93,7 @@ public class PlayerControl : MonoBehaviour
             //Knock vulnerable enemy away
 
             //Get collision direction
-
+            AudioManager.instance.playSound(playerKillsEnemySound,1f);
             Vector3 dir = collision.contacts[0].point -transform.position;
             EnemyKilledParticle.transform.position = collision.contacts[0].point + new Vector3(0,1,0);
             EnemyKilledParticle.GetComponent<ParticleSystem>().Play();

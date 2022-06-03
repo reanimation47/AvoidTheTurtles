@@ -9,6 +9,8 @@ public class TargetNav : MonoBehaviour
     Vector3 destination;
     GameObject particle;
 
+    public AudioClip eatenSound;
+
     void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
@@ -43,6 +45,7 @@ public class TargetNav : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            AudioManager.instance.playSound(eatenSound,1f);
 
             particle.transform.position = transform.position;
             particle.GetComponent<ParticleSystem>().Play();

@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioPlayer = GetComponent<AudioSource>();
-        //playBGM();
+        playBGM();
 
     }
 

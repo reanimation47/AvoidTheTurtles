@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public AudioClip PlayerStealthEffect;
 
     [Header("Prefabs and refs")]
     [SerializeField] private GameObject Player;
@@ -87,12 +88,12 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("MainMenuScene");
         }  );
 
-        PauseMenu_ResumeGame.GetComponent<Button>().onClick.AddListener( ()=> 
+        PauseMenu_ResumeGame.GetComponent<Button>().onClick.AddListener( ()=>
         {
             StartCoroutine(resumeGame(0));
         } );
         // PauseMenu_Quit.GetComponent<Button>().onClick.AddListener( ()=>
-        // {   
+        // {
         //     //StartCoroutine(resumeGame(0));
         //     SceneManager.LoadScene("MainMenuScene");
         // }  );
@@ -126,7 +127,7 @@ public class GameManager : MonoBehaviour
         zWall1 = Instantiate(Wall, new Vector3(0, -2.5f, minY), transform.rotation * Quaternion.Euler(0f, 90f, 0f));
         zWall2 = Instantiate(Wall, new Vector3(0, -2.5f, maxY), transform.rotation * Quaternion.Euler(0f, 90f, 0f));
 
-        
+
         //Instantiate(Enemy, new Vector3( RandomPos(maxX) , 0.5f, RandomPos(maxY) ),  Quaternion.identity);
         SpawnTarget();
         //StartCoroutine("SpawnEnemies");
@@ -151,7 +152,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(resumeGame(0));
             }
         }
-        
+
 
 
         if(Input.GetKeyDown(KeyCode.Space))
@@ -414,6 +415,7 @@ public class GameManager : MonoBehaviour
         if(specialPoints == 5)
         {
             specialPoints = 0;
+            AudioManager.instance.playSound(PlayerStealthEffect,1f);
             StartCoroutine("beginStealth");
 
         }
@@ -425,7 +427,7 @@ public class GameManager : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0;
         PauseMenu.SetActive(true);
-        
+
     }
 
     IEnumerator resumeGame(float delay)

@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c77c92df9ceaeb4c8c33656c2131bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerStealthEffect: {fileID: 8300000, guid: bac9305157e76a345ab55dce7b1563a9, type: 3}
   Player: {fileID: 354034688}
   playerBody: {fileID: 1500955278}
   Enemy: {fileID: 1774625739149480, guid: 38efdaadbfe1d624bbee439cb02e7661, type: 3}

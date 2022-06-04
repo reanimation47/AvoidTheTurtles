@@ -557,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseHover: 0
   Text: {fileID: 1257052719}
-  clickSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 60091b29f4719f043a4c79e2364d91a5, type: 3}
   isWiggling: 0
   wiggleOn: 0
 --- !u!65 &179889665

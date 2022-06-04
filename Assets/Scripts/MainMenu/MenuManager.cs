@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
 
     //int[] arr = new int[] {1, 9, 6, 7, 5, 9};
 
-    
+
 
     private void Awake()
     {
@@ -60,6 +60,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        Screen.SetResolution(1920, 1080, false);
         StartGame.onClick.AddListener( ()=>
         {
             SceneManager.LoadScene("SampleScene");
@@ -98,7 +99,7 @@ public class MenuManager : MonoBehaviour
         //Showing and Hiding frontGUI
         if(!frontGUI){return;}
         frontGUI.transform.localScale = frontGUIscaler;
-        
+
     }
 
     void FixedUpdate()
@@ -169,7 +170,7 @@ public class MenuManager : MonoBehaviour
     {
         ShopGUI.GetComponent<ShopManager>().toggleShopGUI(delay);
     }
-    
+
 
 
 

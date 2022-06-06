@@ -10,19 +10,19 @@ public class AudioManager : MonoBehaviour
     public AudioClip BGM;
 
 
-    private void Awake() 
-    { 
+    private void Awake()
+    {
     // If there is an instance, and it's not me, delete myself.
-    
-        if (instance != null && instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            instance = this; 
+
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
             DontDestroyOnLoad(this.gameObject);
-        } 
+        }
     }
 
     void Start()
@@ -40,5 +40,10 @@ public class AudioManager : MonoBehaviour
     public void playSound( AudioClip sound, float volume)
     {
         audioPlayer.PlayOneShot(sound, volume);
+    }
+
+    public void playSoundAtPos(AudioClip sound, Vector3 pos)
+    {
+        AudioSource.PlayClipAtPoint(sound, pos);
     }
 }

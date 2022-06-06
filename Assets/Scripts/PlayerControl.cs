@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
     {
         Instance = this;
         rb = GetComponent<Rigidbody>();
-        
+
 
     }
 
@@ -66,10 +66,10 @@ public class PlayerControl : MonoBehaviour
 
         rb.velocity = moveDirection;
 
-        Debug.Log(moveDirection != Vector3.zero);
+        //Debug.Log(moveDirection != Vector3.zero);
         if(moveDirection != Vector3.zero)
         {
-            
+
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
@@ -99,7 +99,7 @@ public class PlayerControl : MonoBehaviour
             EnemyKilledParticle.GetComponent<ParticleSystem>().Play();
 
             dir = dir.normalized;
-            Debug.Log(dir);
+            //Debug.Log(dir);
             collision.gameObject.GetComponent<EnemyNavMesh>().disableEverything();
             collision.gameObject.GetComponent<Rigidbody>().AddForce(dir*150f, ForceMode.Impulse);
             //rb.AddForce(-dir*20f, ForceMode.Impulse);

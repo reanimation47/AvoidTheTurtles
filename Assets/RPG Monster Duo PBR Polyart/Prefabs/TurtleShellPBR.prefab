@@ -868,6 +868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c52941cad56724cb7f3a576f69e51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SwooshSound: {fileID: 8300000, guid: 759568f2c94561841bf34978fd0646d0, type: 3}
+  DangerAlert: {fileID: 8300000, guid: 36a43cf26280d46488ea3eb69d1e138c, type: 3}
   rb: {fileID: 0}
   chargeStrength: 40
   chargeDelay: 4
@@ -884,7 +886,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 2
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120

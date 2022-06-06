@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyNavMesh : MonoBehaviour
 {
+    public AudioClip SwooshSound;
+    public AudioClip DangerAlert;
+
     private Animator eAnimator;
 
     NavMeshAgent navAgent;
@@ -14,7 +17,7 @@ public class EnemyNavMesh : MonoBehaviour
     bool onStealth;
     bool isCharging = false;
     ParticleSystem particle;
-    
+
     public Rigidbody rb;
     public float chargeStrength;
     public float chargeDelay;
@@ -114,6 +117,7 @@ public class EnemyNavMesh : MonoBehaviour
     IEnumerator startCharging()
     {
         //Show warning
+        AudioManager.instance.playSound(DangerAlert,0.7f);
         GameObject warning = ChargeWarningPool.SharedInstance.GetPooledObject();
         if (warning != null) {
             warning.transform.position = transform.position + new Vector3(0,3f,0);
@@ -133,6 +137,8 @@ public class EnemyNavMesh : MonoBehaviour
         //Remove warning
         warning.SetActive(false);
 
+        //Enemy charges
+        AudioManager.instance.playSound(SwooshSound,0.5f);
         rb.AddForce(transform.forward *chargeStrength, ForceMode.Impulse );
 
         var particleShape = particle.shape;
